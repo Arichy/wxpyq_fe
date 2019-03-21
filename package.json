@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "start": "npm run serve"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "better-scroll": "^1.15.0",
+    "jwt-decode": "^2.2.0",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1"
   },
