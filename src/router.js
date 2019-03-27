@@ -12,19 +12,19 @@ const router = new Router({
     {
       path: '/',
       name: 'index',
+      redirect: '/chats',
       component: Index,
       meta: {
         requireAuth: true
       },
       children: [
         {
-          path: '',
-          redirect: '/chats'
-        },
-        {
           path: '/chats',
           name: 'chats',
-          component: () => import("@/views/Chats.vue")
+          component: () => import("@/views/Chats.vue"),
+          meta: {
+            requireAuth: true
+          }
         },
         {
           path: '/contacts',
@@ -62,6 +62,16 @@ const router = new Router({
       path: '/publish',
       name: 'publish',
       component: () => import('@/views/Publish.vue')
+    },
+    {
+      path: '/information',
+      name: 'information',
+      component: () => import('@/views/Information.vue')
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: () => import('@/views/ChatView.vue')
     }
   ]
 })
@@ -78,6 +88,7 @@ router.beforeEach((to, from, next) => {
   //     next('/login')
   //   }
   // }
+
   if (to.meta.requireAuth) {
     isLogin ? next() : next('/login')
   } else {

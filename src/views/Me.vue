@@ -2,12 +2,16 @@
   <div class="mine">
     <Header title="我的"></Header>
     <div class="container">
-      <div class="cell_wrapper">
+      <!-- <div class="cell_wrapper">
         <div class="cell_title">
           <img :src="user.avatar" alt v-if="user">
           <span>{{user.name}}</span>
         </div>
       </div>
+      <div class="btn_wrapper">
+        <XButton @click="logout">退出登录</XButton>
+      </div>-->
+      <InfoCell :userInfo="user"></InfoCell>
       <div class="btn_wrapper">
         <XButton @click="logout">退出登录</XButton>
       </div>
@@ -17,22 +21,28 @@
 
 <script>
 import Header from "@/components/Header.vue";
+import InfoCell from "@/components/InfoCell.vue";
 import jwtDecode from "jwt-decode";
 import XButton from "@/components/XButton.vue";
 
 export default {
   name: "me",
-  computed: {
-    user() {
-      const token = localStorage.getItem("wxpyqToken");
-      // 解析token
-      const decode = jwtDecode(token);
-      console.log(decode);
+  // computed: {
+  //   user() {
+  //     const token = localStorage.getItem("wxpyqToken");
+  //     // 解析token
+  //     const decode = jwtDecode(token);
+  //     console.log(decode);
 
-      return decode;
-    }
+  //     return decode;
+  //   }
+  // },
+  data() {
+    return {
+      user: this.$store.getters.user
+    };
   },
-  components: { Header, XButton },
+  components: { Header, XButton, InfoCell },
 
   methods: {
     logout() {
@@ -54,7 +64,8 @@ export default {
   height: calc(100% - 50px);
   margin-top: 50px;
 }
-.cell_wrapper {
+
+/* .cell_wrapper {
   background-color: #fff;
   box-sizing: border-box;
   color: inherit;
@@ -82,6 +93,8 @@ export default {
   display: inline-block;
   vertical-align: middle;
 }
+*/
+
 .btn_wrapper {
   box-sizing: border-box;
   padding: 20px;

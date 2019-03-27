@@ -1,3 +1,4 @@
+// 一条朋友圈组件
 <template>
   <div class="cell_circle">
     <div class="img_wrapper">

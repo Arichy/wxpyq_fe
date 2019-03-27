@@ -1,3 +1,4 @@
+// 发现->朋友圈那种cell的组件
 <template>
   <router-link :to="path">
     <div class="cell-wrapper">

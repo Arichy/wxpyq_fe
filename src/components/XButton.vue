@@ -36,6 +36,7 @@ export default {
     text-align: center;
     box-sizing: border-box;
     outline: 0;
+    border:none;
     padding: 12px 20px;
     font-size: 16px;
     border-radius: 4px;

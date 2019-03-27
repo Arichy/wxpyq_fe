@@ -21,6 +21,7 @@
 <script>
 import InputGroup from "@/components/InputGroup.vue";
 import XButton from "@/components/XButton.vue";
+import jwtDecode from "jwt-decode";
 
 export default {
   name: "login",
@@ -60,6 +61,12 @@ export default {
           // 存储token
           const { token } = res.data;
           localStorage.setItem("wxpyqToken", token);
+
+          // 解析token，获取登录用户的信息
+          const decode = jwtDecode(token);
+
+          // 存储到vuex中
+          this.$store.dispatch("setUser", decode);
 
           // 页面跳转
           this.$router.push("/");
